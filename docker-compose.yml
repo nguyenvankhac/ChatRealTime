@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   mongodb:
     image: mongo
@@ -5,10 +7,11 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - mongo:/data
+      - mongo:/data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=vankhac
       - MONGO_INITDB_ROOT_PASSWORD=vankhac
+
   mongo-express:
     image: mongo-express
     container_name: mongo_express
@@ -21,5 +24,6 @@ services:
       - ME_CONFIG_MONGODB_SERVER=mongodb
     depends_on:
       - mongodb
+
 volumes:
   mongo: {}

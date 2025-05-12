@@ -24,7 +24,7 @@ public class ChatRoomService {
             String recipientId,
             boolean createNewRoomIfNotExists
     ) {
-        return chatRoomRepository.finBySenderIdAndRecipientId(senderId, recipientId)
+        return chatRoomRepository.findBySenderIdAndRecipientId(senderId, recipientId)
                 .map(ChatRoom::getChatId) // Nếu đã tồn tại phòng chat thì lấy chatId
                 .or(() -> {
                     if (createNewRoomIfNotExists) {
